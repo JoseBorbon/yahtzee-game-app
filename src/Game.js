@@ -12,6 +12,7 @@ class Game extends Component {
     this.state = {
       dice: Array.from({ length: NUM_DICE }),
       locked: Array(NUM_DICE).fill(false),
+      lockedRules: Array(13).fill(false),
       rollsLeft: NUM_ROLLS,
       scores: {
         ones: undefined,
@@ -32,6 +33,7 @@ class Game extends Component {
     this.roll = this.roll.bind(this);
     this.doScore = this.doScore.bind(this);
     this.toggleLocked = this.toggleLocked.bind(this);
+    this.ruleLocked = this.ruleLocked.bind(this);
   }
 
   roll(evt) {
@@ -46,6 +48,7 @@ class Game extends Component {
   }
 
   toggleLocked(idx) {
+    if (this.state.rollsLeft === 0) return;
     // toggle whether idx is in locked or not
     this.setState((st) => ({
       locked: [
@@ -56,7 +59,21 @@ class Game extends Component {
     }));
   }
 
-  doScore(rulename, ruleFn) {
+  ruleLocked(idx) {
+    if (this.state.lockedRules[idx] === true) return;
+    this.setState((st) => {
+      return {
+        lockedRules: [
+          ...st.lockedRules.slice(0, idx),
+          !st.lockedRules[idx],
+          ...st.lockedRules.slice(idx + 1),
+        ],
+      };
+    });
+  }
+
+  doScore(rulename, ruleFn, idx) {
+    if (this.state.lockedRules[idx] === true) return;
     // evaluate this ruleFn with the dice and score this rulename
     this.setState((st) => ({
       scores: { ...st.scores, [rulename]: ruleFn(this.state.dice) },
@@ -89,7 +106,12 @@ class Game extends Component {
             </div>
           </section>
         </header>
-        <ScoreTable doScore={this.doScore} scores={this.state.scores} />
+        <ScoreTable
+          doScore={this.doScore}
+          handleRuleLock={this.ruleLocked}
+          scores={this.state.scores}
+          lockedRules={this.state.lockedRules}
+        />
       </div>
     );
   }
