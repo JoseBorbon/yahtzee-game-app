@@ -4,9 +4,9 @@ import './Die.css';
 class Die extends Component {
   constructor(props) {
     super(props);
-    this.handleToggleLock = this.handleToggleLock.bind(this);
+    this.toggleLock = this.toggleLock.bind(this);
   }
-  handleToggleLock() {
+  toggleLock() {
     this.props.handleToggleLock(this.props.idx);
   }
 
@@ -15,7 +15,7 @@ class Die extends Component {
       <button
         className={'Die'}
         style={{ backgroundColor: this.props.locked ? 'grey' : 'black' }}
-        onClick={this.handleToggleLock}
+        onClick={this.toggleLock}
       >
         {this.props.val}
       </button>
