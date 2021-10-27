@@ -11,7 +11,7 @@ class Game extends Component {
     super(props);
     this.state = {
       dice: Array.from({ length: NUM_DICE }),
-      locked: Array(NUM_DICE).fill(false), //[false,false,false,false,false]
+      locked: Array(NUM_DICE).fill(false),
       rollsLeft: NUM_ROLLS,
       scores: {
         ones: undefined,
@@ -40,7 +40,6 @@ class Game extends Component {
       dice: st.dice.map((d, i) =>
         st.locked[i] ? d : Math.ceil(Math.random() * 6)
       ),
-      //return which are locked else lock em all
       locked: st.rollsLeft > 1 ? st.locked : Array(NUM_DICE).fill(true),
       rollsLeft: st.rollsLeft - 1,
     }));
