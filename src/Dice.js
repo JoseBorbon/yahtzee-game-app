@@ -6,7 +6,7 @@ class Dice extends Component {
   render() {
     const dices = this.props.dice.map((d, idx) => (
       <Die
-        handleClick={this.props.handleClick}
+        handleToggleLock={this.props.handleToggleLock}
         val={d}
         locked={this.props.locked[idx]}
         idx={idx}
