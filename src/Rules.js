@@ -57,8 +57,32 @@ class SumDistro extends Rule {
 
 /** Check if full house (3-of-kind and 2-of-kind) */
 
-class FullHouse {
-  // TODO
+class FullHouse extends Rule {
+  evalRoll = (dice) => {
+    const map = new Map();
+
+    dice.forEach((n) => {
+      if (map.has(n)) {
+        map.set(n, map.get(n) + 1);
+      } else {
+        map.set(n, 1);
+      }
+    });
+
+    const mapIter = map.values();
+    let isValid = mapIter.next();
+
+    while (!isValid.done) {
+      if (2 <= isValid.value && isValid.value <= 3) {
+        isValid = mapIter.next();
+      } else {
+        break;
+      }
+    }
+
+    //rule set will put in
+    return isValid.done ? this.score : 0;
+  };
 }
 
 /** Check for small straights. */
@@ -112,7 +136,7 @@ const threeOfKind = new SumDistro({ count: 3 });
 const fourOfKind = new SumDistro({ count: 4 });
 
 // full house scores as flat 25
-const fullHouse = 'TODO';
+const fullHouse = new FullHouse({ score: 25 });
 
 // small/large straights score as 30/40
 const smallStraight = new SmallStraight({ score: 30 });
