@@ -11,15 +11,25 @@ class Die extends Component {
   }
 
   render() {
-    return (
-      <button
-        className={'Die'}
-        style={{ backgroundColor: this.props.locked ? 'grey' : 'black' }}
+    //depending on value create an element and assign it fas-dice-one / dice-two etc.
+    const diceMap = new Map([
+      [1, 'one'],
+      [2, 'two'],
+      [3, 'three'],
+      [4, 'four'],
+      [5, 'five'],
+      [6, 'six'],
+    ]);
+
+    const die = (
+      <i
+        className={`fas fa-dice-${diceMap.get(this.props.val)} ${
+          this.props.locked ? 'Die-locked' : 'Die'
+        } ${this.props.isRolling && !this.props.locked ? 'Die-rolling' : ''}`}
         onClick={this.toggleLock}
-      >
-        {this.props.val}
-      </button>
+      ></i>
     );
+    return <>{die}</>;
   }
 }
 
