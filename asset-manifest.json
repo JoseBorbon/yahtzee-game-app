@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/yahtzee-game-app/static/css/main.cf1dddff.chunk.css",
+    "main.js": "/yahtzee-game-app/static/js/main.dd5c1660.chunk.js",
+    "main.js.map": "/yahtzee-game-app/static/js/main.dd5c1660.chunk.js.map",
+    "runtime-main.js": "/yahtzee-game-app/static/js/runtime-main.206ae929.js",
+    "runtime-main.js.map": "/yahtzee-game-app/static/js/runtime-main.206ae929.js.map",
+    "static/js/2.683cfc98.chunk.js": "/yahtzee-game-app/static/js/2.683cfc98.chunk.js",
+    "static/js/2.683cfc98.chunk.js.map": "/yahtzee-game-app/static/js/2.683cfc98.chunk.js.map",
+    "index.html": "/yahtzee-game-app/index.html",
+    "static/css/main.cf1dddff.chunk.css.map": "/yahtzee-game-app/static/css/main.cf1dddff.chunk.css.map",
+    "static/js/2.683cfc98.chunk.js.LICENSE.txt": "/yahtzee-game-app/static/js/2.683cfc98.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.206ae929.js",
+    "static/js/2.683cfc98.chunk.js",
+    "static/css/main.cf1dddff.chunk.css",
+    "static/js/main.dd5c1660.chunk.js"
+  ]
+}
